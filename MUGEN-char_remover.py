@@ -42,16 +42,18 @@ def main():
                 print(charpath)
                 remlist.append("chars/"+charpath)
     
-    
-    print("\nThe folders above will be removed!")
-    answer = input("Remove them now? Y/N  [N]")
-    if(answer == 'y'):
-        for path in remlist:
-            print("Removing "+path+"...")
-            shutil.rmtree(path)
-        print("DONE!")
+    if(len(remlist) > 0):
+        print("\nThe folders above will be removed!")
+        answer = input("Remove them now? Y/N  [N]")
+        if(answer.lower() == 'y'):
+            for path in remlist:
+                print("Removing "+path+"...")
+                shutil.rmtree(path)
+            print("DONE!")
+        else:
+            print("Remove cancelled, no changes made.")
     else:
-        print("Remove cancelled, no changes made.")
+        print("No unused characters found. Nothing to remove.")
     input("Press any key to quit")
 
 if __name__ == "__main__":
